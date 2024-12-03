@@ -5,7 +5,7 @@ use admin\models\UserAdminSearch;
 use admin\modules\modelExportImport\models\ModelImportLogSearch;
 use admin\modules\rbac\components\RbacNav;
 use common\components\helpers\UserUrl;
-use common\models\{ExportListSearch, TextSearch};
+use common\models\{EmployeeSearch, ExportListSearch, JobTitleSearch, TextSearch};
 use common\modules\log\Log;
 use common\modules\mail\models\{MailingLogSearch, MailingSearch, MailTemplateSearch};
 use common\modules\notification\widgets\NotificationBell;
@@ -39,6 +39,14 @@ if (!Yii::$app->user->isGuest) {
     /** @var Log $logModule */
     $logModule = Yii::$app->getModule('log');
     $menuItems = [
+        [
+            'label' => Yii::t('app', 'Employees'),
+            'url' => UserUrl::setFilters(EmployeeSearch::class, ['/employee/index'])
+        ],
+        [
+            'label' => Yii::t('app', 'Job Titles'),
+            'url' => UserUrl::setFilters(JobTitleSearch::class, ['/job-title/index'])
+        ],
         ['label' => Icon::show('chart-bar') . 'Статистика', 'url' => ['/statistic/index']],
         [
             'label' => Icon::show('users') . 'Пользователи',
