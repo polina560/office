@@ -13,15 +13,8 @@ class m241203_070808_create_job_title_table extends Migration
     final public function safeUp()
     {
         $this->createTable('{{%job_title}}', [
-            'id' => 'int NOT NULL AUTO_INCREMENT',
-            'first_name' => $this->string()->notNull(),
-            'middle_name' => $this->string()->notNull(),
-            'last_name' => $this->string()->notNull(),
-            'work_place_number' => $this->integer()->notNull(),
-            'department' => $this->string(),
-            'photo' => $this->string(),
-            'X' => $this->float(),
-            'Y' => $this->float(),
+            'id' =>'int NOT NULL AUTO_INCREMENT',
+            'title' => $this->string()->notNull()->comment('Название должности'),
             'PRIMARY KEY(id)'
         ]);
     }
