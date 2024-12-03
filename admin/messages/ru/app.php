@@ -171,4 +171,17 @@ return [
     'Download Link' => 'Ссылка на скачивание',
     'Count' => 'Кол-во',
     'Date' => 'Дата',
+    'Employee' => 'Сотрудник',
+    'Employees' => 'Сотрудники',
+    'Create Employee' => 'Добавить сотрудника',
+    'Job Title' => 'Должность',
+    'Job Titles' => 'Должности',
+    'Create Job Title' => 'Добавить должность',
+    'ID Job Title' => 'ID должности',
+    'Work Place Number' => 'Номер рабочего места',
+    'Department' => 'Отдел',
+    'Photo' => 'Фотография',
+    'Update: ' => 'Обновить: ',
+
+
 ];

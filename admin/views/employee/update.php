@@ -9,9 +9,7 @@ use yii\bootstrap5\Html;
  * @var $model common\models\Employee
  */
 
-$this->title = Yii::t('app', 'Update Employee: {name}', [
-    'name' => $model->id,
-]);
+$this->title = Yii::t('app', 'Update: ') . $model->id;
 $this->params['breadcrumbs'][] = [
     'label' => Yii::t('app', 'Employees'),
     'url' => UserUrl::setFilters(EmployeeSearch::class)

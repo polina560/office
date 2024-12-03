@@ -42,8 +42,7 @@ JuiAsset::register($this);
 
     </div>
     <?php
-    $this->registerCss(
-        ".element-wrp {
+    $css = ".element-wrp {
             position: relative;
             width: 785px;
             height: 500px;
@@ -61,7 +60,31 @@ JuiAsset::register($this);
                 cursor: grab;
             }
             #element:active {
-                cursor: grabbing;");
+                cursor: grabbing;";
+    if(!empty($model->X) && !empty($model->Y)){
+        $css = ".element-wrp {
+            position: relative;
+            width: 785px;
+            height: 500px;
+            }
+            .img-wrp {
+            position: relative;
+            height: 500px;
+            }
+            #element {
+                position: absolute;
+                left: ".($model->X-50)."px;
+                top: ".($model->Y- 40)."px;
+                width: 100px;
+                height: 40px;
+                cursor: grab;
+            }
+            #element:active {
+                cursor: grabbing;
+             }";
+    };
+    $this->registerCss(
+        $css);
 
     $script = <<< JS
       $(function(){

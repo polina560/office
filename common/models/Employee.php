@@ -63,7 +63,7 @@ class Employee extends AppActiveRecord
             'middle_name' => Yii::t('app', 'Middle Name'),
             'last_name' => Yii::t('app', 'Last Name'),
             'work_place_number' => Yii::t('app', 'Work Place Number'),
-            'id_job_title' => Yii::t('app', 'Id Job Title'),
+            'id_job_title' => Yii::t('app', 'ID Job Title'),
             'department' => Yii::t('app', 'Department'),
             'photo' => Yii::t('app', 'Photo'),
             'X' => Yii::t('app', 'X'),

@@ -9,9 +9,7 @@ use yii\bootstrap5\Html;
  * @var $model common\models\JobTitle
  */
 
-$this->title = Yii::t('app', 'Update Job Title: {name}', [
-    'name' => $model->title,
-]);
+$this->title = Yii::t('app', 'Update: ') . $model->title;
 $this->params['breadcrumbs'][] = [
     'label' => Yii::t('app', 'Job Titles'),
     'url' => UserUrl::setFilters(JobTitleSearch::class)
