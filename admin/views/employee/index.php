@@ -22,7 +22,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= RbacHtml::encode($this->title) ?></h1>
 
     <div>
-        <?= 
+        <?=
             RbacHtml::a(Yii::t('app', 'Create Employee'), ['create'], ['class' => 'btn btn-success']);
 //           $this->render('_create_modal', ['model' => $model]);
         ?>
@@ -37,11 +37,11 @@ $this->params['breadcrumbs'][] = $this->title;
 
             Column::widget(),
             Column::widget(['attr' => 'first_name']),
-            Column::widget(['attr' => 'middle_name']),
+//            Column::widget(['attr' => 'middle_name']),
             Column::widget(['attr' => 'last_name']),
+            Column::widget(['attr' => 'id_job_title', 'viewAttr' => 'job.title']),
+            Column::widget(['attr' => 'department']),
             Column::widget(['attr' => 'work_place_number']),
-//            Column::widget(['attr' => 'id_job_title']),
-//            Column::widget(['attr' => 'department']),
 //            Column::widget(['attr' => 'photo']),
 //            Column::widget(['attr' => 'X']),
 //            Column::widget(['attr' => 'Y']),

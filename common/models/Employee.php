@@ -33,6 +33,11 @@ class Employee extends AppActiveRecord
         return '{{%employee}}';
     }
 
+    public static function externalAttributes(): array
+    {
+        return ['job.title'];
+    }
+
     /**
      * {@inheritdoc}
      */
@@ -66,7 +71,7 @@ class Employee extends AppActiveRecord
         ];
     }
 
-    final public function getJobTitle(): ActiveQuery
+    final public function getJob(): ActiveQuery
     {
         return $this->hasOne(JobTitle::class, ['id' => 'id_job_title']);
     }

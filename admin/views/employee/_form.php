@@ -1,9 +1,11 @@
 <?php
 
+use common\models\JobTitle;
 use common\widgets\AppActiveForm;
 use kartik\icons\Icon;
 use yii\bootstrap5\Html;
 use yii\helpers\Url;
+use yii\jui\JuiAsset;
 
 /**
  * @var $this     yii\web\View
@@ -11,6 +13,7 @@ use yii\helpers\Url;
  * @var $form     AppActiveForm
  * @var $isCreate bool
  */
+JuiAsset::register($this);
 ?>
 
 <div class="employee-form">
@@ -25,15 +28,61 @@ use yii\helpers\Url;
 
     <?= $form->field($model, 'work_place_number')->textInput() ?>
 
-    <?= $form->field($model, 'id_job_title')->textInput() ?>
+    <?= $form->field($model, 'id_job_title')->dropDownList(JobTitle::getJobTitleArray()) ?>
 
     <?= $form->field($model, 'department')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'photo')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'X')->textInput() ?>
 
-    <?= $form->field($model, 'Y')->textInput() ?>
+
+    <div class="element-wrp">
+        <img class="img-wrp" src=<?= \common\models\Param::findOne(['key' => 1])->value?>>
+        <img id="element" src="/admin/css/map-pointer.svg" alt="icon">
+
+    </div>
+    <?php
+    $this->registerCss(
+        ".element-wrp {
+            position: relative;
+            width: 785px;
+            height: 500px;
+            }
+            .img-wrp {
+            position: relative;
+            height: 500px;
+            }
+            #element {
+                position: absolute;
+                left: 308px;
+                top: 118px;
+                width: 100px;
+                height: 40px;
+                cursor: grab;
+            }
+            #element:active {
+                cursor: grabbing;");
+
+    $script = <<< JS
+      $(function(){
+          $('#element').draggable({
+               containment: '.element-wrp',
+               drag: function(event, ui){
+                   $('#x-field').val(ui.position.left+50);
+                   $('#y-field').val(ui.position.top+40);
+               }
+          });
+      });
+      JS;
+    $this->registerJs($script);
+   ?>
+
+
+    <?= $form->field($model, 'X')->hiddenInput(['id' => 'x-field'])->label(false) ?>
+
+    <?= $form->field($model, 'Y')->hiddenInput(['id' => 'y-field'])->label(false) ?>
+
+
 
     <div class="form-group">
         <?php if ($isCreate) {

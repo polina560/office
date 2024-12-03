@@ -80,6 +80,8 @@ final class EmployeeController extends AdminController
      */
     public function actionCreate(string $redirect = null): Response|string
     {
+//        Yii::$app->getClientScript()->registerCoreScript('js/map');
+
         $model = new Employee();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {

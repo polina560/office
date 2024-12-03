@@ -47,6 +47,15 @@ class JobTitle extends AppActiveRecord
         ];
     }
 
+    public static function getJobTitleArray()
+    {
+        $names = self::find()->select(['id', 'title'])->asArray()->all();
+
+
+        return array_column($names, 'title', 'id');
+    }
+
+
     final public function getEmployees(): ActiveQuery
     {
         return $this->hasMany(Employee::class, ['id_job_title' => 'id']);

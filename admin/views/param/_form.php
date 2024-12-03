@@ -28,6 +28,8 @@ use yii\helpers\Url;
         </div>
     </div>
 
+    <?= $form->field($model, 'value')->widget(\admin\widgets\ckfinder\CKFinderInputFile::class) ?>
+
     <?= $form->field($model, 'type')->widget(Select2::class, ['data' => ParamType::indexedDescriptions()]) ?>
 
     <?= $form->field($model, 'description')->textInput(['maxlength' => true]) ?>
