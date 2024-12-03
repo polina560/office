@@ -17,9 +17,8 @@ final class JobTitleSearch extends JobTitle
     public function rules(): array
     {
         return [
-            [['id', 'work_place_number'], 'integer'],
-            [['first_name', 'middle_name', 'last_name', 'department', 'photo'], 'safe'],
-            [['X', 'Y'], 'number']
+            [['id'], 'integer'],
+            [['title'], 'safe']
         ];
     }
 
@@ -56,16 +55,9 @@ final class JobTitleSearch extends JobTitle
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'work_place_number' => $this->work_place_number,
-            'X' => $this->X,
-            'Y' => $this->Y,
         ]);
 
-        $query->andFilterWhere(['like', 'first_name', $this->first_name])
-            ->andFilterWhere(['like', 'middle_name', $this->middle_name])
-            ->andFilterWhere(['like', 'last_name', $this->last_name])
-            ->andFilterWhere(['like', 'department', $this->department])
-            ->andFilterWhere(['like', 'photo', $this->photo]);
+        $query->andFilterWhere(['like', 'title', $this->title]);
 
         return $dataProvider;
     }

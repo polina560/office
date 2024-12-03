@@ -10,13 +10,13 @@ use yii\bootstrap5\Html;
  */
 
 $this->title = Yii::t('app', 'Update Job Title: {name}', [
-    'name' => $model->id,
+    'name' => $model->title,
 ]);
 $this->params['breadcrumbs'][] = [
     'label' => Yii::t('app', 'Job Titles'),
     'url' => UserUrl::setFilters(JobTitleSearch::class)
 ];
-$this->params['breadcrumbs'][] = ['label' => Html::encode($model->id), 'url' => ['view', 'id' => $model->id]];
+$this->params['breadcrumbs'][] = ['label' => Html::encode($model->title), 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = Yii::t('app', 'Update');
 ?>
 <div class="job-title-update">

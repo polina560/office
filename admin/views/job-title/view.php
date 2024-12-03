@@ -11,7 +11,7 @@ use yii\widgets\DetailView;
  * @var $model common\models\JobTitle
  */
 
-$this->title = $model->id;
+$this->title = $model->title;
 $this->params['breadcrumbs'][] = [
     'label' => Yii::t('app', 'Job Titles'),
     'url' => UserUrl::setFilters(JobTitleSearch::class)
@@ -41,14 +41,7 @@ $this->params['breadcrumbs'][] = RbacHtml::encode($this->title);
         'model' => $model,
         'attributes' => [
             Column::widget(),
-            Column::widget(['attr' => 'first_name']),
-            Column::widget(['attr' => 'middle_name']),
-            Column::widget(['attr' => 'last_name']),
-            Column::widget(['attr' => 'work_place_number']),
-            Column::widget(['attr' => 'department']),
-            Column::widget(['attr' => 'photo']),
-            Column::widget(['attr' => 'X']),
-            Column::widget(['attr' => 'Y']),
+            Column::widget(['attr' => 'title']),
         ]
     ]) ?>
 

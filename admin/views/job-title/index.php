@@ -36,14 +36,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => SerialColumn::class],
 
             Column::widget(),
-            Column::widget(['attr' => 'first_name']),
-            Column::widget(['attr' => 'middle_name']),
-            Column::widget(['attr' => 'last_name']),
-            Column::widget(['attr' => 'work_place_number']),
-//            Column::widget(['attr' => 'department']),
-//            Column::widget(['attr' => 'photo']),
-//            Column::widget(['attr' => 'X']),
-//            Column::widget(['attr' => 'Y']),
+            Column::widget(['attr' => 'title']),
 
             ['class' => GroupedActionColumn::class]
         ]

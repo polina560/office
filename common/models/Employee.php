@@ -11,7 +11,14 @@ use yii\helpers\ArrayHelper;
  * This is the model class for table "{{%employee}}".
  *
  * @property int                     $id
- * @property string                  $title Название должности
+ * @property string                  $first_name        Имя
+ * @property string                  $middle_name       Отчество
+ * @property string                  $last_name         Фамилия
+ * @property int                     $work_place_number Номер раочего места
+ * @property string|null             $department        Отдел
+ * @property string|null             $photo             Фотография
+ * @property float|null              $X                 Координата X
+ * @property float|null              $Y                 Координата Y
  *
  * @property-read EmployeeJobTitle[] $employeeJobTitles
  */
@@ -31,8 +38,10 @@ class Employee extends AppActiveRecord
     public function rules(): array
     {
         return [
-            [['title'], 'required'],
-            [['title'], 'string', 'max' => 255]
+            [['first_name', 'middle_name', 'last_name', 'work_place_number'], 'required'],
+            [['work_place_number'], 'integer'],
+            [['X', 'Y'], 'number'],
+            [['first_name', 'middle_name', 'last_name', 'department', 'photo'], 'string', 'max' => 255]
         ];
     }
 
@@ -43,7 +52,14 @@ class Employee extends AppActiveRecord
     {
         return [
             'id' => Yii::t('app', 'ID'),
-            'title' => Yii::t('app', 'Title'),
+            'first_name' => Yii::t('app', 'First Name'),
+            'middle_name' => Yii::t('app', 'Middle Name'),
+            'last_name' => Yii::t('app', 'Last Name'),
+            'work_place_number' => Yii::t('app', 'Work Place Number'),
+            'department' => Yii::t('app', 'Department'),
+            'photo' => Yii::t('app', 'Photo'),
+            'X' => Yii::t('app', 'X'),
+            'Y' => Yii::t('app', 'Y'),
         ];
     }
 

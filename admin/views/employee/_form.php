@@ -17,7 +17,21 @@ use yii\helpers\Url;
 
     <?php $form = AppActiveForm::begin() ?>
 
-    <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'first_name')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'middle_name')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'last_name')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'work_place_number')->textInput() ?>
+
+    <?= $form->field($model, 'department')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'photo')->textInput(['maxlength' => true]) ?>
+
+    <?= $form->field($model, 'X')->textInput() ?>
+
+    <?= $form->field($model, 'Y')->textInput() ?>
 
     <div class="form-group">
         <?php if ($isCreate) {
