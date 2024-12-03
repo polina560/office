@@ -25,6 +25,8 @@ use yii\helpers\Url;
 
     <?= $form->field($model, 'work_place_number')->textInput() ?>
 
+    <?= $form->field($model, 'id_job_title')->textInput() ?>
+
     <?= $form->field($model, 'department')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'photo')->textInput(['maxlength' => true]) ?>

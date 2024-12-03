@@ -10,17 +10,18 @@ use yii\helpers\ArrayHelper;
 /**
  * This is the model class for table "{{%employee}}".
  *
- * @property int                     $id
- * @property string                  $first_name        Имя
- * @property string                  $middle_name       Отчество
- * @property string                  $last_name         Фамилия
- * @property int                     $work_place_number Номер раочего места
- * @property string|null             $department        Отдел
- * @property string|null             $photo             Фотография
- * @property float|null              $X                 Координата X
- * @property float|null              $Y                 Координата Y
+ * @property int              $id
+ * @property string           $first_name        Имя
+ * @property string           $middle_name       Отчество
+ * @property string           $last_name         Фамилия
+ * @property int              $work_place_number Номер рабочего места
+ * @property int              $id_job_title      Должность
+ * @property string|null      $department        Отдел
+ * @property string|null      $photo             Фотография
+ * @property float|null       $X                 Координата X
+ * @property float|null       $Y                 Координата Y
  *
- * @property-read EmployeeJobTitle[] $employeeJobTitles
+ * @property-read JobTitle    $jobTitle
  */
 class Employee extends AppActiveRecord
 {
@@ -38,10 +39,11 @@ class Employee extends AppActiveRecord
     public function rules(): array
     {
         return [
-            [['first_name', 'middle_name', 'last_name', 'work_place_number'], 'required'],
-            [['work_place_number'], 'integer'],
+            [['first_name', 'middle_name', 'last_name', 'work_place_number', 'id_job_title'], 'required'],
+            [['work_place_number', 'id_job_title'], 'integer'],
             [['X', 'Y'], 'number'],
-            [['first_name', 'middle_name', 'last_name', 'department', 'photo'], 'string', 'max' => 255]
+            [['first_name', 'middle_name', 'last_name', 'department', 'photo'], 'string', 'max' => 255],
+            [['id_job_title'], 'exist', 'skipOnError' => true, 'targetClass' => JobTitle::class, 'targetAttribute' => ['id_job_title' => 'id']]
         ];
     }
 
@@ -56,6 +58,7 @@ class Employee extends AppActiveRecord
             'middle_name' => Yii::t('app', 'Middle Name'),
             'last_name' => Yii::t('app', 'Last Name'),
             'work_place_number' => Yii::t('app', 'Work Place Number'),
+            'id_job_title' => Yii::t('app', 'Id Job Title'),
             'department' => Yii::t('app', 'Department'),
             'photo' => Yii::t('app', 'Photo'),
             'X' => Yii::t('app', 'X'),
@@ -63,8 +66,8 @@ class Employee extends AppActiveRecord
         ];
     }
 
-    final public function getEmployeeJobTitles(): ActiveQuery
+    final public function getJobTitle(): ActiveQuery
     {
-        return $this->hasMany(EmployeeJobTitle::class, ['id_employee' => 'id']);
+        return $this->hasOne(JobTitle::class, ['id' => 'id_job_title']);
     }
 }

@@ -17,7 +17,7 @@ final class EmployeeSearch extends Employee
     public function rules(): array
     {
         return [
-            [['id', 'work_place_number'], 'integer'],
+            [['id', 'work_place_number', 'id_job_title'], 'integer'],
             [['first_name', 'middle_name', 'last_name', 'department', 'photo'], 'safe'],
             [['X', 'Y'], 'number']
         ];
@@ -57,6 +57,7 @@ final class EmployeeSearch extends Employee
         $query->andFilterWhere([
             'id' => $this->id,
             'work_place_number' => $this->work_place_number,
+            'id_job_title' => $this->id_job_title,
             'X' => $this->X,
             'Y' => $this->Y,
         ]);

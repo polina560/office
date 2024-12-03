@@ -10,10 +10,10 @@ use yii\helpers\ArrayHelper;
 /**
  * This is the model class for table "{{%job_title}}".
  *
- * @property int                     $id
- * @property string                  $title Название должности
+ * @property int             $id
+ * @property string          $title Название должности
  *
- * @property-read EmployeeJobTitle[] $employeeJobTitles
+ * @property-read Employee[] $employees
  */
 class JobTitle extends AppActiveRecord
 {
@@ -47,8 +47,8 @@ class JobTitle extends AppActiveRecord
         ];
     }
 
-    final public function getEmployeeJobTitles(): ActiveQuery
+    final public function getEmployees(): ActiveQuery
     {
-        return $this->hasMany(EmployeeJobTitle::class, ['if_job_title' => 'id']);
+        return $this->hasMany(Employee::class, ['id_job_title' => 'id']);
     }
 }

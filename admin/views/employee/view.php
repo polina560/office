@@ -45,6 +45,7 @@ $this->params['breadcrumbs'][] = RbacHtml::encode($this->title);
             Column::widget(['attr' => 'middle_name']),
             Column::widget(['attr' => 'last_name']),
             Column::widget(['attr' => 'work_place_number']),
+            Column::widget(['attr' => 'id_job_title']),
             Column::widget(['attr' => 'department']),
             Column::widget(['attr' => 'photo']),
             Column::widget(['attr' => 'X']),
