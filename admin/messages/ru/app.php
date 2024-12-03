@@ -177,7 +177,7 @@ return [
     'Job Title' => 'Должность',
     'Job Titles' => 'Должности',
     'Create Job Title' => 'Добавить должность',
-    'ID Job Title' => 'ID должности',
+    'ID Job Title' => 'Должность',
     'Work Place Number' => 'Номер рабочего места',
     'Department' => 'Отдел',
     'Photo' => 'Фотография',
