@@ -15,6 +15,7 @@ import NotificationBell from './components/NotificationBell.vue'
 import MailPreview from './components/MailPreview.vue'
 import StatisticBlock from './components/StatisticBlock.vue';
 import { AxiosKey } from './symbols'
+import OfficeMap from './components/OfficeMap.vue'
 
 const pinia = createPinia()
 const app = createApp({
@@ -37,4 +38,5 @@ app
   .component('FontAwesomeIcon', FontAwesomeIcon)
   .component('MailPreview', MailPreview)
   .component('StatisticBlock', StatisticBlock)
+  .component('OfficeMap', OfficeMap)
 app.mount('#app')

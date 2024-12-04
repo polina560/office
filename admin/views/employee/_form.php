@@ -48,57 +48,64 @@ if(!empty($model->X) && !empty($model->Y)) {
 
 
 
-    <div class="element-wrp">
-        <img class="img-wrp" src=<?= Param::findOne(['key' => 1])->value ?>>
-        <img id="element" src="/admin/css/map-pointer.svg" alt="icon">
+<!--    <div class="element-wrp">-->
+<!--        <img class="img-wrp" src=--><?php //= Param::findOne(['key' => 1])->value ?>
+<!--        <img id="element" src="/admin/css/map-pointer.svg" alt="icon">-->
 
-    </div>
-    <?php
+<!--    </div>-->
+<!--    --><?php
+//
+//    $size = getimagesize( Yii::$app->request->hostInfo . Param::findOne(['key' => 1])->value);
+//
+//        $css = ".element-wrp {
+//            position: relative;
+//            width: ".$size[0]."px;
+//            height: ".$size[1]."px;
+//            }
+//            .img-wrp {
+//            position: relative;
+//            width: ".$size[0]."px;
+//            height: ".$size[1]."px;
+//            }
+//            #element {
+//                position: absolute;
+//                left: ".$width."px;
+//                top: ".$height."px;
+//                height: 40px;
+//                cursor: grab;
+//            }
+//            #element:active {
+//                cursor: grabbing;
+//             }";
+//
+//    $this->registerCss(
+//        $css);
+//
+//    $script = <<< JS
+//      $(function(){
+//          $('#element').draggable({
+//               containment: '.element-wrp',
+//               drag: function(event, ui){
+//                   $('#x-field').val(ui.position.left+25);
+//                   $('#y-field').val(ui.position.top+40);
+//               }
+//          });
+//      });
+//      JS;
+//    $this->registerJs($script);
+//   ?>
 
-    $size = getimagesize( Yii::$app->request->hostInfo . Param::findOne(['key' => 1])->value);
+    <h1>Выбор места: </h1>
+    <br>
+    <office-map :coordX=<?=$width?> :coordY=<?=$height?>  ></office-map>
 
-        $css = ".element-wrp {
-            position: relative;
-            width: ".$size[0]."px;
-            height: ".$size[1]."px;
-            }
-            .img-wrp {
-            position: relative;
-            width: ".$size[0]."px;
-            height: ".$size[1]."px;
-            }
-            #element {
-                position: absolute;
-                left: ".$width."px;
-                top: ".$height."px;
-                height: 40px;
-                cursor: grab;
-            }
-            #element:active {
-                cursor: grabbing;
-             }";
-
-    $this->registerCss(
-        $css);
-
-    $script = <<< JS
-      $(function(){
-          $('#element').draggable({
-               containment: '.element-wrp',
-               drag: function(event, ui){
-                   $('#x-field').val(ui.position.left+25);
-                   $('#y-field').val(ui.position.top+40);
-               }
-          });
-      });
-      JS;
-    $this->registerJs($script);
-   ?>
+<!--     :image=--><?php //=Yii::$app->request->hostInfo . Param::findOne(['key' => 1])->value?><!-- -->
 
 
-    <?= $form->field($model, 'X')->hiddenInput(['id' => 'x-field'])->label(false) ?>
 
-    <?= $form->field($model, 'Y')->hiddenInput(['id' => 'y-field'])->label(false) ?>
+<!--    --><?php //= $form->field($model, 'X')->hiddenInput(['id' => 'x-field'])->label(false) ?>
+
+<!--    --><?php //= $form->field($model, 'Y')->hiddenInput(['id' => 'y-field'])->label(false) ?>
 
 
 
