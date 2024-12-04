@@ -26,14 +26,13 @@ const updateCoordsOff = () => document.removeEventListener('mousemove', updateCo
 </script>
 
 <template>
-  <div class="element-wrp">
+
         <div
           class="circle"
           :style="circleStyles"
           @mousedown="updateCoordsOn"
           @mouseup="updateCoordsOff"
         ></div>
-  </div>
  <p>{{coordX}}</p>
 
 </template>
@@ -44,7 +43,7 @@ body {
 }
 
 .circle {
-  position: absolute;
+  position: relative;
   display: inline-block;
   transform: translate(-50%, -50%);
   width: 100px;
