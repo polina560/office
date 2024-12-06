@@ -1,5 +1,6 @@
 <?php
 
+use admin\widgets\ckfinder\CKFinderInputFile;
 use common\models\JobTitle;
 use common\models\Param;
 use common\widgets\AppActiveForm;
@@ -16,16 +17,7 @@ use yii\jui\JuiAsset;
  * @var $width    int
  * @var $height   int
  */
-JuiAsset::register($this);
-
-$width = 308;
-$height = 118;
-
-if(!empty($model->X) && !empty($model->Y)) {
-    $width = $model->X - 25;
-    $height = $model->Y - 40;
-}
-
+$image = Param::findOne(['group' => 'Фото', 'key' => '1'])->value;
 ?>
 
 <div class="employee-form">
@@ -44,69 +36,17 @@ if(!empty($model->X) && !empty($model->Y)) {
 
     <?= $form->field($model, 'department')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'photo')->widget(\admin\widgets\ckfinder\CKFinderInputFile::class) ?>
-
-
-
-<!--    <div class="element-wrp">-->
-<!--        <img class="img-wrp" src=--><?php //= Param::findOne(['key' => 1])->value ?>
-<!--        <img id="element" src="/admin/css/map-pointer.svg" alt="icon">-->
-
-<!--    </div>-->
-<!--    --><?php
-//
-//    $size = getimagesize( Yii::$app->request->hostInfo . Param::findOne(['key' => 1])->value);
-//
-//        $css = ".element-wrp {
-//            position: relative;
-//            width: ".$size[0]."px;
-//            height: ".$size[1]."px;
-//            }
-//            .img-wrp {
-//            position: relative;
-//            width: ".$size[0]."px;
-//            height: ".$size[1]."px;
-//            }
-//            #element {
-//                position: absolute;
-//                left: ".$width."px;
-//                top: ".$height."px;
-//                height: 40px;
-//                cursor: grab;
-//            }
-//            #element:active {
-//                cursor: grabbing;
-//             }";
-//
-//    $this->registerCss(
-//        $css);
-//
-//    $script = <<< JS
-//      $(function(){
-//          $('#element').draggable({
-//               containment: '.element-wrp',
-//               drag: function(event, ui){
-//                   $('#x-field').val(ui.position.left+25);
-//                   $('#y-field').val(ui.position.top+40);
-//               }
-//          });
-//      });
-//      JS;
-//    $this->registerJs($script);
-//   ?>
+    <?= $form->field($model, 'photo')->widget(CKFinderInputFile::class) ?>
 
     <h1>Выбор места: </h1>
     <br>
-    <office-map :coordX=<?=$width?> :coordY=<?=$height?>  ></office-map>
-
-<!--     :image=--><?php //=Yii::$app->request->hostInfo . Param::findOne(['key' => 1])->value?><!-- -->
-
-
-
-<!--    --><?php //= $form->field($model, 'X')->hiddenInput(['id' => 'x-field'])->label(false) ?>
-
-<!--    --><?php //= $form->field($model, 'Y')->hiddenInput(['id' => 'y-field'])->label(false) ?>
-
+    <office-map
+        :x-coordinate="<?= (float)$model->X ?>"
+        :y-coordinate="<?= (float)$model->Y ?>"
+        x-input-name="<?= $model->formName() ?>[X]"
+        y-input-name="<?= $model->formName() ?>[Y]"
+        background-image="<?= $image ?>"
+    ></office-map>
 
 
     <div class="form-group">
